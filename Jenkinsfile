@@ -25,15 +25,7 @@ pipeline {
             }
         }
         
-        stage('Terraform Plan') {
-            steps {
-                dir('Docker_terraform/terra') {
-                    script {
-                        sh 'terraform plan'
-                    }
-                }
-            }
-        }
+        
         
         stage('Terraform Apply') {
             steps {

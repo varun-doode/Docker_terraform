@@ -10,7 +10,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-               sh 'git 'https://github.com/varun-doode/Docker_terraform.git''
+                sh 'git clone https://github.com/varun-doode/Docker_terraform.git Docker_terraform'
             }
         }
         

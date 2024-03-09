@@ -6,30 +6,40 @@ pipeline {
         AWS_SECRET_ACCESS_KEY = credentials('AWS_SECRET_ACCESS_KEY')
         AWS_DEFAULT_REGION    = "us-east-2"
     }
+    
     stages {
         stage('Checkout') {
             steps {
                 git 'https://github.com/varun-doode/Docker_terraform.git'
             }
         }
+        
         stage('Terraform Init') {
             steps {
-                script {
-                    sh 'terraform init'
+                dir('Docker_terraform') {
+                    script {
+                        sh 'terraform init'
+                    }
                 }
             }
         }
+        
         stage('Terraform Plan') {
             steps {
-                script {
-                    sh 'terraform plan -out=tfplan'
+                dir('Docker_terraform') {
+                    script {
+                        sh 'terraform plan -out=tfplan'
+                    }
                 }
             }
         }
+        
         stage('Terraform Apply') {
             steps {
-                script {
-                    sh 'terraform apply -auto-approve tfplan'
+                dir('Docker_terraform') {
+                    script {
+                        sh 'terraform apply -auto-approve tfplan'
+                    }
                 }
             }
         }

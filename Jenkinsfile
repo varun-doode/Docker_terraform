@@ -16,7 +16,7 @@ pipeline {
         
         stage('Terraform Init') {
             steps {
-                dir('Docker_terraform') {
+                dir('Docker_terraform/terra') {
                     script {
                         sh 'terraform init'
                     }
@@ -26,7 +26,7 @@ pipeline {
         
         stage('Terraform Plan') {
             steps {
-                dir('Docker_terraform') {
+                dir('Docker_terraform/terra') {
                     script {
                         sh 'terraform plan -out=tfplan'
                     }
@@ -36,7 +36,7 @@ pipeline {
         
         stage('Terraform Apply') {
             steps {
-                dir('Docker_terraform') {
+                dir('Docker_terraform/terra') {
                     script {
                         sh 'terraform apply -auto-approve tfplan'
                     }

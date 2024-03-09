@@ -29,7 +29,7 @@ pipeline {
             steps {
                 dir('Docker_terraform/terra') {
                     script {
-                        sh 'terraform plan -out=tfplan'
+                        sh 'terraform plan'
                     }
                 }
             }
@@ -39,7 +39,7 @@ pipeline {
             steps {
                 dir('Docker_terraform/terra') {
                     script {
-                        sh 'terraform apply -auto-approve tfplan'
+                        sh 'terraform apply'
                     }
                 }
             }
